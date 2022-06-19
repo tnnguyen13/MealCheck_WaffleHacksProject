@@ -33,7 +33,7 @@ class FoodScraper:
         search = self.get_food() + "restaurant" + str(self.get_zipcode())
         url_rest = f"https://www.google.com/maps/search/{search}"
         browser.get(url_rest)
-        title = browser.find_element(by=By.CLASS_NAME, value="NrDZNb")
+        title = browser.find_element_by_class_name("NrDZNb")
         self._restaurant_name = title.text
 
     def obtain_restaurant_data(self):
