@@ -1,4 +1,6 @@
-# Authors: Rebecca Chen, Scott Irons, Tee Nguyen
+# Authors: rebeccachen8788, scottirons, tnnguyen13
+# Date: 06/19/2022
+# Description: UserName class to manage the users of the program.
 
 class UserName:
     """ contains user class information; includes username, user's current location, user's current search,

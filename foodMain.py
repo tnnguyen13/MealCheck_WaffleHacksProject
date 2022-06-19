@@ -1,7 +1,8 @@
-# Authors: Rebecca Chen, Scott Irons, Tee Nguyen
-# Create a backend of the Meal program
+# Authors: rebeccachen8788, scottirons, tnnguyen13
+# Date: 06/19/2022
+# Description: Create a backend of the Meal program
 
-import dataScraper
+from dataScraper import FoodScraper
 from userName import UserName
 import re
 
@@ -13,6 +14,7 @@ class MealCheck:
         self._current_location = ""
         self._current_search = ""
         self._pattern = '^[0-9]{5}(-[0-9]{4})?$'
+        self._current = None
 
     def create_user(self):
         name_checker = False
@@ -32,10 +34,23 @@ class MealCheck:
         self._user_database[name] = UserName(name, search, location)
 
     def find_restaurant(self):
-
+        self._current = FoodScraper(self._current_search, self._current_location)  # foodscraper object
+        self._current.obtain_restaurant()
+        self._current.obtain_restaurant_data()
+        self._current.adjust_string()
         self._current_name = ""
         self._current_location = ""
         self._current_search = ""
+
+    def output(self):
+        name = self._current.get_restaurant_name()
+        ratings = self._current.get_ratings()
+        reviews = self._current.get_reviews()
+        price = self._current.get_price()
+        print(f'\nThis is the closest restaurant to you!\n{name}')
+        print(f'Current Rating (1-5): {ratings}\n')
+        print(f'Number of reviews: {reviews}\n')
+        print(f'Price rating: {price}\n')
 
     def verify_user(self) -> bool:
         if self._current_name != '':
@@ -56,7 +71,8 @@ class MealCheck:
 def main():
     test = MealCheck()
     test.create_user()
-    print('hello')
+    test.find_restaurant()
+    test.output()
 
 
 if __name__ == '__main__':

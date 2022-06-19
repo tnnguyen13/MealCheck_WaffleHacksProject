@@ -33,12 +33,11 @@ class FoodScraper:
         search = self.get_food() + "restaurant" + str(self.get_zipcode())
         url_rest = f"https://www.google.com/maps/search/{search}"
         browser.get(url_rest)
-        title = browser.find_element_by_class_name("NrDZNb")
+        title = browser.find_element(by=By.CLASS_NAME, value="NrDZNb")
         self._restaurant_name = title.text
 
     def obtain_restaurant_data(self):
-        restaurant_title = self.obtain_restaurant()
-        search = f"{restaurant_title} {self.get_zipcode()}"
+        search = f"{self._restaurant_name} {self.get_zipcode()}"
         url_rest = f"https://www.google.com/maps/search/{search}"
         browser.get(url_rest)
         address = browser.find_element(by=By.CLASS_NAME, value="m6QErb")
@@ -81,10 +80,11 @@ class FoodScraper:
 
 
 def main():
-    Korean = FoodScraper("Steak", 95125)
+    Korean = FoodScraper("vietnamese", 98031)
     Korean.obtain_restaurant()
     Korean.obtain_restaurant_data()
     Korean.adjust_string()
+    print(Korean.get_reviews())
 
 
 if __name__ == '__main__':
