@@ -1,4 +1,4 @@
-# DataScraper
+# DataScraper via Google Maps
 # Author: rebeccachen8788
 
 from selenium import webdriver
