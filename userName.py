@@ -3,10 +3,10 @@
 class UserName:
     """ contains user class information; includes username, user's current location, user's current search,
     their search history, and their location history """
-    def __init__(self, user, location):
+    def __init__(self, user, search, location):
         self._user = user
         self._location = location
-        self._search = ""
+        self._search = search
         self._searchHistory = []
         self._locationHistory = []
 

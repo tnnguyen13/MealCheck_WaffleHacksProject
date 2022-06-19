@@ -1,3 +1,15 @@
 {
-	"user" : [ "tnnguyen13", "95125", "korean", [ "chinese", "american"], ["95133", "94065"]]
+	"user" : {
+		"name": "tnnguyen13",
+		"location:" : "95125",
+		"search": "korean",
+		"search_history" : "",
+		"location_history": ""
+	}, {
+	"name": "scottirons",
+	"location": "27707",
+	"search" : "american",
+	"search_history" : "",
+	"location_history" : ""
+}
 }
