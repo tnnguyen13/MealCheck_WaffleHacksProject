@@ -14,6 +14,11 @@ browser = webdriver.Chrome(service=s, options=options)
 
 
 class FoodScraper:
+    """
+    A class used to scrap data from data submission on food category and zipcode user entered.
+    Will pull a restaurant name and scrap information on the overall ratings, number of reviews,
+    and the amount of dollar signs associated with that restaurant.
+    """
     def __init__(self, food, zipcode):
         self._food = food
         self._zipcode = zipcode
@@ -24,12 +29,18 @@ class FoodScraper:
         self._price = ""
 
     def get_food(self):
+        """Returns the name of the food category the user inputted."""
         return self._food
 
     def get_zipcode(self):
+        """Returns the zipcode the user inputted."""
         return self._zipcode
 
     def obtain_restaurant(self):
+        """
+        Will obtain the first restaurant name that shows up in Google Maps using the
+        data the user provided for zipcode and food category.
+        """
         search = self.get_food() + "restaurant" + str(self.get_zipcode())
         url_rest = f"https://www.google.com/maps/search/{search}"
         browser.get(url_rest)
@@ -37,7 +48,12 @@ class FoodScraper:
         self._restaurant_name = title.text
 
     def obtain_restaurant_data(self):
-        search = f"{self._restaurant_name} {self.get_zipcode()}"
+        """
+        Will obtain restaurant data from Google Maps from the first restaurant
+        name received in the initial Google Maps search from the food category and zipcode
+        the user entered.
+        """
+        search = f"{self._restaurant_title} {self.get_zipcode()}"
         url_rest = f"https://www.google.com/maps/search/{search}"
         browser.get(url_rest)
         address = browser.find_element(by=By.CLASS_NAME, value="m6QErb")
@@ -46,6 +62,11 @@ class FoodScraper:
             self.obtain_restaurant_data()
 
     def adjust_string(self):
+        """
+        Will specifically parse out the ratings, reviews, and number
+        of dollar signs associated with the 1st restaurant that matches
+        the food and zipcode category the user wanted.
+        """
         temp_string = self._everything
         counter = 0
         while counter <= 2:
@@ -67,15 +88,19 @@ class FoodScraper:
 
     # getters for foodMain class
     def get_restaurant_name(self):
+        """Will return the restaurant name."""
         return self._restaurant_name
 
     def get_ratings(self):
+        """Will return the ratings."""
         return self._ratings
 
     def get_reviews(self):
+        """Will return the reviews."""
         return self._reviews
 
     def get_price(self):
+        """Will return the price."""
         return self._price
 
 
