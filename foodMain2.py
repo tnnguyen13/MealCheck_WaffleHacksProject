@@ -6,7 +6,6 @@ from dataScraper import FoodScraper
 from userName import UserName
 import re
 import gui
-import sys
 
 
 class MealCheck:
