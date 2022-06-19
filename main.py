@@ -2,7 +2,7 @@
 # Date: 06/19/2022
 # Description: Main run of MealCheck Class - will include future GUI.
 
-from foodMain import MealCheck
+from foodMain2 import MealCheck
 import sys
 from PyQt5.QtWidgets import QApplication
 

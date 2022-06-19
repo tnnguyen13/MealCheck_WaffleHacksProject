@@ -45,7 +45,6 @@ class MealCheck:
 
     def find_restaurant(self):
         """ Uses the FoodScraper class to find a restaurant in the user's locale. """
-        print(self._current_search)
         self._current = FoodScraper(self._current_search, self._current_location)  # FoodScraper object
         self._current.obtain_restaurant()
         self._current.obtain_restaurant_data()
