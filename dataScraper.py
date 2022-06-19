@@ -53,7 +53,7 @@ class FoodScraper:
         name received in the initial Google Maps search from the food category and zipcode
         the user entered.
         """
-        search = f"{self._restaurant_title} {self.get_zipcode()}"
+        search = f"{self._restaurant_name} {self.get_zipcode()}"
         url_rest = f"https://www.google.com/maps/search/{search}"
         browser.get(url_rest)
         address = browser.find_element(by=By.CLASS_NAME, value="m6QErb")
