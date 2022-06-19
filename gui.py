@@ -28,9 +28,9 @@ class MainWindow(QtWidgets.QWidget):
             return text
 
     def get_zip(self):
-        i, ok_pressed = QInputDialog.getInt(self, "Get integer", "What's your zipcode?", 00000, 0, 99999, 1)
-        if ok_pressed:
-            return i
+        text, ok_pressed = QInputDialog.getText(self, "Get text", "What's your zipcode?", QLineEdit.Normal,"")
+        if ok_pressed and text != '':
+            return text
 
 
 if __name__ == '__main__':
